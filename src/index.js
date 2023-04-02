@@ -36,4 +36,12 @@ const askQuestions = async () => {
         }
       } internAnswers.addMember;
     }
-
+    const categorisedEmployees = categorisedTeams(employees);
+    const html = generateHtml(categorisedEmployees);
+    writeToFile("./dist/index.html", html);
+    console.log("Team Successfully Generated");
+    process.exit(0);
+  };
+  
+  askQuestions();
+  
