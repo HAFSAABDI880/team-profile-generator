@@ -14,3 +14,24 @@ const {
   generateHtml,
   writeToFile,
 } = require("../utils");
+const askQuestions = async () => {
+    const employees = [];
+  
+    const managerAnswers = await inquirer.prompt(managerQuestions);
+    const newManager = new manager(managerAnswers);
+    employees.push(newManager);
+    while (
+        managerAnswers.addMember !== "I don't want to add any more team members"
+      ) {
+        if (managerAnswers.addMember == "Engineer") {
+          const engineerAnswers = await inquirer.prompt(engineerQuestions);
+          const newEngineer = new Engineer(engineerAnswers);
+          employees.push(newEngineer);
+          managerAnswers.addMember = engineerAnswers.addMember;
+        } else if (managerAnswers.addMember == "Intern") {
+          const internAnswers = await inquirer.prompt(internQuestions);
+          const newIntern = new Intern(internAnswers);
+          employees.push(newIntern);
+          managerAnswers.addMember = internAnswers.addMember;
+        }
+      }
