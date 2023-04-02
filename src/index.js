@@ -34,4 +34,6 @@ const askQuestions = async () => {
           employees.push(newIntern);
           managerAnswers.addMember = internAnswers.addMember;
         }
-      }
+      } internAnswers.addMember;
+    }
+
